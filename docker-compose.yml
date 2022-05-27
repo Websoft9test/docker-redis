@@ -14,11 +14,11 @@ services:
     entrypoint: ["redis-server", "/etc/redis.conf"] 
     restart: always
 
-  services:
-    redisinsight:
-      image: redislabs/redisinsight::${APP_VERSION}
-      ports:
-      - "9001:8001"
+  redisinsight:
+    image: redislabs/redisinsight:${APP_VERSION}
+    ports:
+      - "${APP_PORT}:8001"
+
       
 networks:
   default:
