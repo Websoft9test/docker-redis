@@ -3,19 +3,27 @@ version: '3.8'
 services:
 
   redis:
-    image: redis:${REDIS_VERSION}
-    container_name: ${APP_CONTAINER_NAME}
+    image: redis:${APP_REDIS_VERSION}
+    container_name: ${APP_NAME}
     restart: always
     ports: 
       - ${APP_PORT}:6379
     volumes:
       - ./redis.conf:/etc/redis.conf:ro
-      - ${VOLUMES_PATH_PREFIX}/redis/data:/data/
+      - redis_data:/data
     entrypoint: ["redis-server", "/etc/redis.conf"] 
-    # entrypoint effect after run container immediately, cmd effect the last step of booting.
-    # where can also use "command: /etc/redis.conf".
     restart: always
 
+  services:
+    redisinsight:
+      image: redislabs/redisinsight
+      ports:
+      - "9001:8001"
+      
 networks:
   default:
-      name: ${APP_NETWORK}
+      name: ${APP_NAME}
+
+volumes:
+  opencart:
+  redis_data:
