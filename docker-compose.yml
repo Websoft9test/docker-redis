@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   redis:
     image: redis:${APP_REDIS_VERSION}
     container_name: ${APP_NAME}
@@ -20,7 +19,6 @@ services:
     ports:
       - "${APP_PORT}:8001"
 
-      
 networks:
   default:
       name: ${APP_NAME}
