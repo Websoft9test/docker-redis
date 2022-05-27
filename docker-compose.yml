@@ -25,5 +25,4 @@ networks:
       name: ${APP_NAME}
 
 volumes:
-  opencart:
   redis_data:
