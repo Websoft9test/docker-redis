@@ -25,7 +25,8 @@ services:
 
 networks:
   default:
-      name: ${APP_NAME}
+    name: ${APP_NETWORK}
+    external: true
 
 volumes:
   redis_data:
