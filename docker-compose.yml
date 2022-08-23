@@ -9,7 +9,7 @@ services:
     container_name: ${APP_NAME}
     restart: always
     ports: 
-      - ${APP_REDIS_PORT}:6379
+      - ${APP_DB_PORT}:6379
     volumes:
       - ./src/redis.conf:/etc/redis.conf:ro
       - redis_data:/data
@@ -21,7 +21,7 @@ services:
     container_name: redis-gui
     restart: always
     ports:
-      - "${APP_PORT}:8001"
+      - "${APP_GUI_PORT}:8001"
 
 networks:
   default:
